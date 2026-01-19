@@ -135,6 +135,52 @@ const FooterBottom = styled.div`
   }
 `
 
+const LogoContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+
+  @media (max-width: 768px) {
+    gap: 0.5rem;
+  }
+`
+
+// Updated LogoImage component with responsive sizing
+const LogoImage = styled.img`
+  height: 40px; /* Default size */
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  @media (max-width: 768px) {
+    height: 32px; /* Smaller on mobile */
+  }
+
+  @media (max-width: 480px) {
+    height: 28px; /* Even smaller on very small screens */
+  }
+`
+
+// Alternative if you want text next to the logo
+const LogoText = styled.span`
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #2563eb;
+  
+  @media (max-width: 768px) {
+    font-size: 1.25rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.1rem;
+  }
+`
+
 const Copyright = styled.p`
   color: #64748b;
   font-size: 0.9rem;
@@ -166,10 +212,22 @@ const Footer = () => {
     <FooterWrapper id="footer">
       <FooterContent>
         <FooterSection>
-          <Logo>
+          {/* <Logo>
             <LogoMark>P</LogoMark>
             ProjectHub
-          </Logo>
+          </Logo> */}
+
+          <LogoContainer>
+          {/* Logo image with alt text for accessibility */}
+          <LogoImage 
+            src="./Speedlink_logo.jpeg"
+            alt="SpeedLink Research Logo" 
+            // title="SpeedLink Research"
+          />
+          {/* Optional: Keep text next to logo */}
+          <LogoText>ProjectHub</LogoText>
+        </LogoContainer>
+
           <FooterDescription>
             We help students build defensible, high-quality final year projects with expert guidance and technical
             support.

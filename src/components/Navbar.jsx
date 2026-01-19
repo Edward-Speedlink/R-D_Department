@@ -1,5 +1,6 @@
 "use client"
 import styled from "styled-components"
+// import speedlinkLogo from '../../public/Speedlink_logo.jpeg';
 
 const NavbarWrapper = styled.nav`
   position: sticky;
@@ -24,18 +25,71 @@ const NavContent = styled.div`
   }
 `
 
-const Logo = styled.div`
+const LogoContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+
+  @media (max-width: 768px) {
+    gap: 0.5rem;
+  }
+`
+
+// Updated LogoImage component with responsive sizing
+const LogoImage = styled.img`
+  height: 40px; /* Default size */
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  @media (max-width: 768px) {
+    height: 32px; /* Smaller on mobile */
+  }
+
+  @media (max-width: 480px) {
+    height: 28px; /* Even smaller on very small screens */
+  }
+`
+
+// Alternative if you want text next to the logo
+const LogoText = styled.span`
   font-size: 1.5rem;
   font-weight: 800;
   color: #2563eb;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-
+  
   @media (max-width: 768px) {
     font-size: 1.25rem;
   }
+
+  @media (max-width: 480px) {
+    font-size: 1.1rem;
+  }
 `
+
+// If you want just the logo without text, use this:
+// const Logo = styled.div`
+//   display: flex;
+//   align-items: center;
+//   gap: 0.5rem;
+// `
+
+// const Logo = styled.div`
+//   font-size: 1.5rem;
+//   font-weight: 800;
+//   color: #2563eb;
+//   display: flex;
+//   align-items: center;
+//   gap: 0.5rem;
+
+//   @media (max-width: 768px) {
+//     font-size: 1.25rem;
+//   }
+// `
 
 const LogoMark = styled.span`
   width: 32px;
@@ -104,14 +158,29 @@ const Navbar = () => {
       element.scrollIntoView({ behavior: "smooth" })
     }
   }
+  // Function to handle logo click (scrolls to top/home)
+  const handleLogoClick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 
   return (
     <NavbarWrapper>
       <NavContent>
-        <Logo>
+        {/* <Logo>
           <LogoMark>P</LogoMark>
           ProjectHub
-        </Logo>
+        </Logo> */}
+
+        <LogoContainer onClick={handleLogoClick}>
+          {/* Logo image with alt text for accessibility */}
+          <LogoImage 
+            src="./Speedlink_logo.jpeg"
+            alt="SpeedLink Research Logo" 
+            // title="SpeedLink Research"
+          />
+          {/* Optional: Keep text next to logo */}
+          <LogoText>ProjectHub</LogoText>
+        </LogoContainer>
         {/* Update navbar border color */}
         <NavMenu>
           <NavLink onClick={() => handleScroll("hero")}>Home</NavLink>
