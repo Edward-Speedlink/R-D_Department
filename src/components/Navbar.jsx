@@ -190,7 +190,7 @@ const Navbar = () => {
           <NavLink onClick={() => handleScroll("faq")}>FAQ</NavLink>
           <NavLink onClick={() => handleScroll("footer")}>Contact</NavLink>
         </NavMenu>
-        <CTAButton onClick={() => (window.location.href = "https://wa.me/1234567890")}>Get Started</CTAButton>
+        <CTAButton onClick={() => (window.location.href = "https://wa.me/+2349167716220")}>Get Started</CTAButton>
       </NavContent>
     </NavbarWrapper>
   )
